@@ -1,8 +1,28 @@
+// import my custom sort and search function collections
 const sort = require('./sort');
 const search = require('./search');
 
-let data = [1, 3, 5, 6, 3, 435, 3, 123, 3, 5, 3, 4, 66, 55, 44, 33, 2, 5, 6, 777, 6, 5, 4, 345, 23, 2, 5, 64, 300];
+// returns an array of random positive ints. set num of array items and max possible value of each
+const makeRandomIntArray = (length, max) => {
+  let array = [];
+  while (array.length < length) {
+    array.push(Math.floor(Math.random() * max));
+  }
+  return array;
+};
 
+// get some random data: an array of arg1 ints, max possible value of arg2
+let data = makeRandomIntArray(40, 100);
+console.log('SOME RANDOM DATA:', data);
+
+// bubble sort it
 data = sort.bubble(data);
+console.log('BUBBLE SORTED', data);
 
-search.binary(2, data);
+let item;
+let foundIndex;
+
+// find index of number
+item = 50;
+foundIndex = search.binary(item, data);
+console.log('Found index of ', item, 'in ', data, 'is', foundIndex);
