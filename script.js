@@ -12,7 +12,7 @@ const makeRandomIntArray = (length, max) => {
 };
 
 // get some random data: an array of arg1 ints, max possible value of arg2
-let data = makeRandomIntArray(40, 100);
+let data = makeRandomIntArray(100, 100);
 console.log('SOME RANDOM DATA:', data);
 
 // bubble sort it
@@ -25,4 +25,6 @@ let foundIndex;
 // find index of number
 item = 50;
 foundIndex = search.binary(item, data);
-console.log('Found index of ', item, 'in ', data, 'is', foundIndex);
+console.log('Using iterative binary search...');
+console.log('Found ', item, 'in', data, 'at position', foundIndex);
+if (foundIndex < 0) console.log('ITEM NOT FOUND');
