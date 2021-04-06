@@ -7,14 +7,9 @@ const binary = (searchItem, sortedArray) => {
 
   // loop until you pinpoint a single item (or find a match below)
   while (startIdx <= endIdx) {
-    // console.log(`start ${startIdx} end ${endIdx}`);
-    // console.log(`Finding ${searchItem} in ${sortedArray.slice(startIdx, endIdx + 1)} using iterative binary search `);
-
     // find the center slot
     let middleIdx = Math.floor((endIdx + startIdx) / 2);
     let centerItem = sortedArray[middleIdx];
-
-    // console.log(`center value ${centerItem} at position ${middleIdx}`);
 
     // if that's your search item then great! return that index
     // otherwise restrict your search to the remaining half the smaller or larger than the middle point
