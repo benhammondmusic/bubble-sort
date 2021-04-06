@@ -1,6 +1,8 @@
 // import my custom sort and search function collections
 const sort = require('./sort');
 const search = require('./search');
+// for longer arrays in console.log
+const util = require('util');
 
 // returns an array of random positive ints. set num of array items and max possible value of each
 const makeRandomIntArray = (length, max) => {
@@ -12,19 +14,21 @@ const makeRandomIntArray = (length, max) => {
 };
 
 // get some random data: an array of arg1 ints, max possible value of arg2
-let data = makeRandomIntArray(10, 10);
-console.log('SOME RANDOM DATA:', data);
+let data = makeRandomIntArray(1000, 1000);
 
 // bubble sort it
 // data = sort.bubble(data);
 // console.log('BUBBLE SORTED THE DATA');
 
 // merge sort it
-data = sort.merge(data);
-console.log('MERGE SORTED DATA', data);
+let mergeSortedData = sort.merge(data);
+console.log('SOME RANDOM DATA:');
+console.log(util.inspect(data, { maxArrayLength: null }));
+console.log('DATA AFTER MERGE SORT');
+console.log(util.inspect(mergeSortedData, { maxArrayLength: null }));
 
-let item;
-let foundIndex;
+// let item;
+// let foundIndex;
 
 // find index of number
 /* item = 50;

@@ -27,15 +27,50 @@ const bubble = (data) => {
 };
 
 // merge sort implementation
+// PSEUDOCODE from https://en.wikipedia.org/wiki/Merge_sort#Top-down_implementation_using_lists
 const merge = (data) => {
   console.log('_______MERGE SORTING_______');
 
+  /*  */
+  /* method to run 2nd, AFTER the recursive splitting down to 1 item sub lists */
+  /*  */
   const mergeHalves = (leftHalf, rightHalf) => {
-    // ! need to implement actual merge
     console.log('***MERGING', leftHalf, rightHalf);
-    return [...leftHalf, ...rightHalf];
+
+    // array to be filled merged items
+    let mergedArray = [];
+
+    // keep looping while both arrays still have items
+    while (leftHalf.length && rightHalf.length) {
+      console.log('LEFT HALF', leftHalf, 'RIGHT HALF', rightHalf);
+      console.log('LEFT ', leftHalf[0], 'RIGHT', rightHalf[0]);
+
+      // compare first items of both halves, remove the smaller one and place in the merged array
+      if (leftHalf[0] <= rightHalf[0]) {
+        console.log('LEFT IS SMALLER');
+        mergedArray.push(leftHalf.shift());
+      } else {
+        console.log('RIGHT IS SMALLER');
+        mergedArray.push(rightHalf.shift());
+      }
+    }
+
+    // if the two halves were uneven, merge in the remaining items from the longer half
+    while (leftHalf.length) {
+      console.log('REMAING ITEMS IN LEFT HALF', leftHalf);
+      mergedArray.push(leftHalf.shift());
+    }
+    while (rightHalf.length) {
+      console.log('REMAING ITEMS IN right HALF', rightHalf);
+      mergedArray.push(rightHalf.shift());
+    }
+
+    return mergedArray;
   };
 
+  /*  */
+  /* recursively break apart until they are 1 item sublists */
+  /*  */
   const recursiveSort = (data) => {
     console.log('current sub-array:', data);
     if (data.length <= 1) {
@@ -43,10 +78,11 @@ const merge = (data) => {
       console.log('sublist has 1 or 0 items');
       return data;
     }
+    // find the middle or just left of middle if even number of elements
     let middleIndex = Math.floor(data.length / 2);
     console.log('middle index:', middleIndex);
 
-    // recursive call on first half
+    // recursive call on first half (slice has an exclusive ending index)
     let leftHalf = recursiveSort(data.slice(0, middleIndex));
 
     // recursive call on second half
@@ -54,12 +90,13 @@ const merge = (data) => {
 
     // merge sorted left and rights
     let merged = mergeHalves(leftHalf, rightHalf);
-
     return merged;
   };
 
+  // initial call or recursive fn
   return recursiveSort(data);
 };
 
+// EXPORTS for use in other files
 exports.bubble = bubble;
 exports.merge = merge;
