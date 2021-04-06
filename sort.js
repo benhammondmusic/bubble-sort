@@ -57,11 +57,11 @@ const merge = (data) => {
 
     // if the two halves were uneven, merge in the remaining items from the longer half
     while (leftHalf.length) {
-      console.log('REMAING ITEMS IN LEFT HALF', leftHalf);
+      console.log('REMAINING ITEMS IN LEFT HALF', leftHalf);
       mergedArray.push(leftHalf.shift());
     }
     while (rightHalf.length) {
-      console.log('REMAING ITEMS IN right HALF', rightHalf);
+      console.log('REMAINING ITEMS IN right HALF', rightHalf);
       mergedArray.push(rightHalf.shift());
     }
 
